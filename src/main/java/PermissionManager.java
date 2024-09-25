@@ -1,24 +1,23 @@
-public class PermissionManager {
-    private PermissionLevel mCurrentLevel = PermissionLevel.USER;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-    public String getRoleName(PermissionLevel level) {
-        switch (level) {
-            case ADMIN:
-                return "Admin";
-            case DEVELOPER:
-                return "Developer";
-            case USER:
-                return "User";
-            default:
-                throw new IllegalArgumentException("Invalid Permission Level");
-        }
+class PermissionManagerTest {
+    @Test
+    void testGetRoleName() {
+        PermissionManager pm = new PermissionManager();
+        assertEquals("Admin", pm.getRoleName(PermissionLevel.ADMIN));
+        assertEquals("Developer", pm.getRoleName(PermissionLevel.DEVELOPER));
+        assertEquals("User", pm.getRoleName(PermissionLevel.USER));
     }
 
-    public void setPermissionLevel(PermissionLevel level) {
-        this.mCurrentLevel = level;
-    }
-
-    public PermissionLevel getCurrentLevel() {
-        return this.mCurrentLevel;
+    @Test
+    void testSetCurrentLevel() {
+        PermissionManager pm = new PermissionManager();
+        pm.setCurrentLevel(PermissionLevel.ADMIN);
+        assertEquals(PermissionLevel.ADMIN, pm.getCurrentLevel());
+        pm.setCurrentLevel(PermissionLevel.DEVELOPER);
+        assertEquals(PermissionLevel.DEVELOPER, pm.getCurrentLevel());
+        pm.setCurrentLevel(PermissionLevel.USER);
+        assertEquals(PermissionLevel.USER, pm.getCurrentLevel());
     }
 }
