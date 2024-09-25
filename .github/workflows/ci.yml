@@ -30,7 +30,6 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
         with:
           args: >
             -Dsonar.projectKey="bhos-qa_lab-3-rgasimzade"
