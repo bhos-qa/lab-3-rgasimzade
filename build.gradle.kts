@@ -3,6 +3,11 @@ plugins {
     id("org.sonarqube") version "4.0.0.2929" // Ensure the SonarQube plugin version is specified
     id("jacoco")
 }
+
+
+jacoco {
+    toolVersion = "0.8.7"
+}
 sonarqube {
     properties {
         property ("sonar.projectKey", "bhos-qa_lab-3-rgasimzade")
