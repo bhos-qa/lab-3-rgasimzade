@@ -3,6 +3,14 @@ plugins {
     id("org.sonarqube") version "4.0.0.2929" // Ensure the SonarQube plugin version is specified
     id("jacoco")
 }
+dependencies {
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
 
 sonarqube {
     properties {
@@ -19,14 +27,7 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
 
-tasks.test {
-    useJUnitPlatform()
-}
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
